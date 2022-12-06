@@ -54,6 +54,31 @@ void setPinAsDigital(port_t port, pinNumber_t pin){
     }
 }
 
+void selectPullUp(port_t port, pinNumber_t pin){
+	switch (port)
+    {
+    case PORTA:
+				SET_BIT(GPIO_PORTA_PUR, pin);
+        break;
+		case PORTB:
+				SET_BIT(GPIO_PORTB_PUR, pin);
+        break;
+		case PORTC:
+				SET_BIT(GPIO_PORTC_PUR, pin);
+        break;
+		case PORTD:
+				SET_BIT(GPIO_PORTD_PUR, pin);
+        break;
+		case PORTE:
+				SET_BIT(GPIO_PORTE_PUR, pin);
+        break;
+		case PORTF:
+        SET_BIT(GPIO_PORTF_PUR, pin);
+        break;
+    }
+}
+
+
 void setPinDirection(port_t port, pinNumber_t pin, DioDirecrtion_t direction){
 	if(direction == Dio_input){
 		switch (port)
@@ -111,19 +136,19 @@ void Dio_Write(port_t port, pinNumber_t pin, DioLevel_t level){
 				CLR_BIT(GPIO_PORTA_DATA,pin);
         break;
 		case PORTB:
-				CLR_BIT(GPIO_PORTA_DATA,pin);
+				CLR_BIT(GPIO_PORTB_DATA,pin);
         break;
 		case PORTC:
-				CLR_BIT(GPIO_PORTA_DATA,pin);
+				CLR_BIT(GPIO_PORTC_DATA,pin);
         break;
 		case PORTD:
-				CLR_BIT(GPIO_PORTA_DATA,pin);
+				CLR_BIT(GPIO_PORTD_DATA,pin);
         break;
 		case PORTE:
-				CLR_BIT(GPIO_PORTA_DATA,pin);
+				CLR_BIT(GPIO_PORTE_DATA,pin);
         break;
 		case PORTF:
-        CLR_BIT(GPIO_PORTA_DATA,pin);
+        CLR_BIT(GPIO_PORTF_DATA,pin);
         break;
     }
 	}
